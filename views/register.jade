@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h1 Register
+    p Welcome to the #{title} Page
+    form(method='post', action='/users/register', enctype='multipart/form-data')
+        .form-group
+            label Name
+            input.form-control(name='name', type='text', placeholder='Bill')
+        .form-group
+            label Email
+            input.form-control(name='email', type='email', placeholder='bill@example.com')
+        .form-group
+            label Username
+            input.form-control(name='username', type='text', placeholder='Bill1524')
+        .form-group
+            label Password
+            input.form-control(name='password', type='password', placeholder='Enter a Password')
+        .form-group
+            label Confirm Password
+            input.form-control(name='password', type='password-confirm', placeholder='Confirm Password')
+        .form-group
+            label Profile Picture
+            input.form-control(name='profile-picture', type='file')
+        input.btn.btn-default.btn-primary(name='submit', type='submit', value='Register')

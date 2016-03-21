@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Signin
+    p Welcome to the #{title} Page
+    form(method='post', action='/users/register', enctype='multipart/form-data')
+        .form-group
+            label Username
+            input.form-control(name='username', type='text', placeholder='Bill1524')
+        .form-group
+            label Password
+            input.form-control(name='password', type='password', placeholder='Enter a Password')
+        input.btn.btn-default.btn-primary(name='submit', type='submit', value='Signin')
