@@ -3,6 +3,10 @@ extends layout
 block content
     h1 Register
     p Welcome to the #{title} Page
+    ul.errors
+        if errors
+            each error, i in errors
+                li.alert.alert-danger #{error.msg}
     form(method='post', action='/users/register', enctype='multipart/form-data')
         .form-group
             label Name
@@ -18,8 +22,8 @@ block content
             input.form-control(name='password', type='password', placeholder='Enter a Password')
         .form-group
             label Confirm Password
-            input.form-control(name='password', type='password-confirm', placeholder='Confirm Password')
+            input.form-control(name='password2', type='password', placeholder='Confirm Password')
         .form-group
             label Profile Picture
-            input.form-control(name='profile-picture', type='file')
+            input.form-control(name='profilePicture', type='file')
         input.btn.btn-default.btn-primary(name='submit', type='submit', value='Register')
