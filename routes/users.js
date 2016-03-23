@@ -19,6 +19,7 @@ router.get('/signin', function(req, res, next){
 });
 
 router.post('/register', function(req, res, next){
+
     // Get values from Form
     // Name of var is 'name' from post req
     var name = req.body.name;
@@ -29,6 +30,7 @@ router.post('/register', function(req, res, next){
     var password = req.body.password;
     var password2 = req.body.password2;
 
+    console.log(name);
     // To get file we check image field first
     if(req.files && req.files.profilePicture){
         consle.log('Uploading an image!');
@@ -56,6 +58,9 @@ router.post('/register', function(req, res, next){
     var errors = req.validationErrors();
 
     if(errors){
+        // For Debugging
+        console.log(errors);
+
         res.render('register', {
             errors: errors,
             name: name,
@@ -69,8 +74,7 @@ router.post('/register', function(req, res, next){
             name: name,
             email: email,
             username: username,
-            password: password,
-            profilePicture: picName
+            password: password
         });
 
         // Create user using Model
@@ -78,7 +82,7 @@ router.post('/register', function(req, res, next){
         //     if(err) throw err;
         //     console.log(user);
         // });
-        console.log('User created: ' + newUser);
+        console.log('User created: ' + name);
         // Success Flash Message
         req.flash('success', 'You are now registered and may log in!');
 
