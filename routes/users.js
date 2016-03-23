@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.send('respond with a MEME: this page is a 7/10, too much water');
 });
 
 router.get('/register', function(req, res, next){
@@ -30,16 +30,16 @@ router.post('/register', function(req, res, next){
     var password2 = req.body.password2;
 
     // To get file we check image field first
-    if(req.files.profilePicture){
+    if(req.files && req.files.profilePicture){
         consle.log('Uploading an image!');
-
+        var pic = req.files.profilePicture;
         // File information
-        var picName = req.files.profilePicture.originalname;
-        var picServerName = req.files.profilePicture.name;
-        var picMime = req.files.profilePicture.mimetype;
-        var picPath = req.files.profilePicture.path;
-        var picExt = req.files.profilePicture.extension;
-        var picSize = req.files.profilePicture.size;
+        var picName = pic.originalname;
+        var picServerName = pic.name;
+        var picMime = pic.mimetype;
+        var picPath = pic.path;
+        var picExt = pic.extension;
+        var picSize = pic.size;
     } else {
         // Set a Default profile picture
         var picName = 'nopicture.jpg';
